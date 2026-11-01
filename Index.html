@@ -1,0 +1,554 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090d1c">
+  <meta name="description" content="PratikVerse by Pratik Kushwaha — creative websites, AI-assisted solutions, and digital freelance services.">
+  <title>PratikVerse | Creative Freelance Studio</title>
+
+  <style>
+    :root {
+      --bg: #090d1c;
+      --panel: #121a30;
+      --purple: #9b87ff;
+      --blue: #55d6ff;
+      --text: #f5f6ff;
+      --muted: #a8b0ca;
+      --border: rgba(255,255,255,.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background:
+        radial-gradient(ellipse at 80% 10%, #25205a 0, transparent 35%),
+        radial-gradient(ellipse at 0% 50%, #101e43 0, transparent 35%),
+        var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+
+    .container { width: min(1100px, 90%); margin: auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(9,13,28,.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -.8px;
+    }
+
+    .logo span {
+      color: var(--purple);
+      text-shadow: 0 0 20px #8972ff77;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover { color: var(--blue); }
+
+    .hero {
+      min-height: 620px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 35px;
+      padding: 65px 0;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 13px;
+      border: 1px solid #9b87ff66;
+      border-radius: 30px;
+      color: #c7bdff;
+      background: #9b87ff12;
+      font-size: .8rem;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 1.06;
+      letter-spacing: -3px;
+      margin-bottom: 22px;
+    }
+
+    .gradient {
+      background: linear-gradient(100deg, var(--purple), var(--blue));
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .hero p, .section-intro {
+      color: var(--muted);
+      max-width: 590px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 13px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 19px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn:hover { transform: translateY(-3px); }
+
+    .primary {
+      color: #090d1c;
+      background: linear-gradient(110deg, var(--purple), var(--blue));
+      border: none;
+      box-shadow: 0 8px 30px #7c71ff30;
+    }
+
+    .secondary { background: #ffffff08; }
+
+    .visual {
+      min-height: 390px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      perspective: 900px;
+    }
+
+    .orb {
+      position: absolute;
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 25%,
+        #f4eaff, #a38bff 18%, #5550d8 42%,
+        #20285f 68%, #11182e);
+      box-shadow: 0 0 75px #826bff55,
+                  inset -18px -20px 45px #080c25;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .orbit {
+      position: absolute;
+      width: 340px;
+      height: 125px;
+      border: 2px solid #8f8aff90;
+      border-radius: 50%;
+      transform: rotate(-28deg);
+      box-shadow: 0 0 20px #8277ff20;
+    }
+
+    .orbit.two {
+      width: 350px;
+      height: 155px;
+      border-color: #55d6ff70;
+      transform: rotate(55deg);
+    }
+
+    .welcome-card {
+      position: absolute;
+      bottom: 8px;
+      right: 0;
+      width: min(260px, 90%);
+      background: #151d36dd;
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--border);
+      padding: 16px;
+      border-radius: 18px;
+      box-shadow: 0 20px 60px #0004;
+    }
+
+    .welcome-card small { color: var(--blue); }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotateX(-8deg); }
+      50% { transform: translateY(-16px) rotateX(8deg); }
+    }
+
+    section { padding: 75px 0; }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .section-intro { margin-bottom: 30px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .card {
+      padding: 23px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: linear-gradient(145deg, #ffffff0b, #ffffff03);
+      transition: transform .25s, border-color .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #9b87ff88;
+    }
+
+    .card .icon { font-size: 1.8rem; }
+    .card h3 { margin: 12px 0 7px; }
+    .card p { color: var(--muted); font-size: .94rem; }
+
+    .about-box, .contact-box {
+      padding: clamp(22px, 5vw, 42px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: linear-gradient(130deg, #171d3b, #11182a);
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 6px 5px 0 0;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: #9b87ff16;
+      color: #d2caff;
+      font-size: .82rem;
+    }
+
+    .project-card {
+      min-height: 175px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-label { color: var(--blue); font-size: .8rem; }
+
+    form { display: grid; gap: 14px; margin-top: 24px; }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: 11px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: #080d1b;
+      outline: none;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--purple);
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+
+    .note { color: var(--muted); font-size: .83rem; margin-top: 12px; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 26px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: .87rem;
+    }
+
+    @media (max-width: 760px) {
+      nav { padding: 14px 0; align-items: flex-start; flex-direction: column; }
+      .nav-links { gap: 12px; }
+      .hero { grid-template-columns: 1fr; padding-top: 55px; }
+      .visual { min-height: 340px; }
+      .orb { width: 220px; height: 220px; }
+      .orbit { width: 280px; }
+      .orbit.two { width: 285px; }
+      .grid { grid-template-columns: 1fr; }
+      h1 { letter-spacing: -1.8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <a class="logo" href="#home">Pratik<span>Verse</span></a>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div>
+        <span class="eyebrow">✦ Creative Freelance Studio</span>
+        <h1>Ideas into <span class="gradient">digital experiences.</span></h1>
+        <p>
+          Hi, I'm Pratik Kushwaha. Welcome to PratikVerse,
+          where creative thinking and AI-assisted tools help
+          turn your ideas into useful digital solutions.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#services">Explore Services ↗</a>
+          <a class="btn secondary" href="#contact">Let's Talk</a>
+        </div>
+      </div>
+
+      <div class="visual" aria-label="Animated abstract 3D artwork">
+        <div class="orbit"></div>
+        <div class="orbit two"></div>
+        <div class="orb"></div>
+        <div class="welcome-card">
+          <small>WELCOME TO PRATIKVERSE</small>
+          <h3>Let's build something meaningful.</h3>
+          <p>Creative ideas. Practical solutions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-box">
+        <span class="eyebrow">A little about me</span>
+        <h2 class="section-title">Hello, I'm Pratik.</h2>
+        <p class="section-intro">
+          I explore creative technology and AI-assisted workflows
+          to help people with websites, digital content, organization,
+          and everyday online tasks. Each project starts with a clear
+          discussion of your needs, timeline, and budget.
+        </p>
+        <span class="tag">Creative thinking</span>
+        <span class="tag">AI-assisted workflows</span>
+        <span class="tag">Learning through projects</span>
+        <span class="tag">Client-focused communication</span>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <span class="eyebrow">What I can help with</span>
+        <h2 class="section-title">Services</h2>
+        <p class="section-intro">
+          Flexible services for individuals, students, and small businesses.
+          Final scope and pricing are agreed before work begins.
+        </p>
+
+        <div class="grid">
+          <article class="card">
+            <div class="icon">🌐</div>
+            <h3>Website Creation</h3>
+            <p>Simple landing pages, personal portfolios, and small business websites.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🤖</div>
+            <h3>AI-Assisted Solutions</h3>
+            <p>Simple workflows and automation ideas for repetitive tasks.</p>
+          </article>
+          <article class="card">
+            <div class="icon">📊</div>
+            <h3>Data Entry</h3>
+            <p>Organizing spreadsheets, entering records, and formatting information.</p>
+          </article>
+          <article class="card">
+            <div class="icon">✍️</div>
+            <h3>Digital Content</h3>
+            <p>Draft captions, product descriptions, and basic proofreading.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🎬</div>
+            <h3>Basic Video Editing</h3>
+            <p>Short video edits, subtitles, and simple social media clips.</p>
+          </article>
+          <article class="card">
+            <div class="icon">💻</div>
+            <h3>Basic Coding Help</h3>
+            <p>Debugging small issues and helping organize code with testing.</p>
+          </article>
+          <article class="card">
+            <div class="icon">📚</div>
+            <h3>Maths Tutoring</h3>
+            <p>Learning support for suitable school-level mathematics topics.</p>
+          </article>
+          <article class="card">
+            <div class="icon">📝</div>
+            <h3>Typing & Formatting</h3>
+            <p>Neatly formatted documents and text organization.</p>
+          </article>
+          <article class="card">
+            <div class="icon">✨</div>
+            <h3>Custom Requests</h3>
+            <p>Have another idea? Share the details to discuss what's possible.</p>
+          </article>
+        </div>
+
+        <p class="note">
+          Services depend on project requirements and availability.
+          I confirm the scope before accepting each project.
+        </p>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container">
+        <span class="eyebrow">Selected work</span>
+        <h2 class="section-title">Projects & Experiments</h2>
+        <p class="section-intro">
+          A space for projects, demonstrations, and work samples.
+          Replace these examples with real projects as they are completed.
+        </p>
+        <div class="grid">
+          <article class="card project-card">
+            <span class="project-label">PROJECT 01</span>
+            <div>
+              <h3>Creative Portfolio</h3>
+              <p>A responsive portfolio concept with a modern interface.</p>
+            </div>
+          </article>
+          <article class="card project-card">
+            <span class="project-label">PROJECT 02</span>
+            <div>
+              <h3>Study Hub Concept</h3>
+              <p>A student resource portal concept for organizing study materials.</p>
+            </div>
+          </article>
+          <article class="card project-card">
+            <span class="project-label">PROJECT 03</span>
+            <div>
+              <h3>Productivity Workflow</h3>
+              <p>An exploration of simple tools for organizing everyday tasks.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact-box">
+        <span class="eyebrow">Have a project in mind?</span>
+        <h2 class="section-title">Let's discuss your idea.</h2>
+        <p class="section-intro">
+          Share what you need, your preferred deadline, and your budget.
+          We can discuss the scope and agree on a price before work begins.
+        </p>
+
+        <form id="contactForm">
+          <input id="clientName" type="text" placeholder="Your name" required>
+          <input id="clientEmail" type="email" placeholder="Your email address" required>
+          <select id="service" required>
+            <option value="">Choose a service</option>
+            <option>Website Creation</option>
+            <option>AI-Assisted Solutions</option>
+            <option>Data Entry</option>
+            <option>Digital Content</option>
+            <option>Video Editing</option>
+            <option>Maths Tutoring</option>
+            <option>Basic Coding Help</option>
+            <option>Typing and Formatting</option>
+            <option>Other</option>
+          </select>
+          <input id="budget" type="text" placeholder="Your budget in USD (flexible)">
+          <textarea id="details" placeholder="Tell me about your project..." required></textarea>
+          <button class="btn primary" type="submit">Prepare WhatsApp Inquiry ↗</button>
+        </form>
+
+        <p class="note">
+          This form prepares a WhatsApp message; it does not send automatically
+          or store form submissions. Your email is included in the message.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> PratikVerse · Created by Pratik Kushwaha</p>
+      <p>Creative ideas. Practical digital solutions.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Replace this with your WhatsApp number, including country code.
+    // Use digits only: no + sign, spaces, or dashes.
+    const WHATSAPP_NUMBER = "YOUR_WHATSAPP_NUMBER";
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      if (!/^\d{8,15}$/.test(WHATSAPP_NUMBER)) {
+        alert("The website owner needs to set a valid WhatsApp number in the code first.");
+        return;
+      }
+
+      const name = document.getElementById("clientName").value.trim();
+      const email = document.getElementById("clientEmail").value.trim();
+      const service = document.getElementById("service").value;
+      const budget = document.getElementById("budget").value.trim() || "Flexible";
+      const details = document.getElementById("details").value.trim();
+
+      const message =
+        "Hello PratikVerse! I'd like to discuss a project.\n\n" +
+        "Name: " + name + "\n" +
+        "Email: " + email + "\n" +
+        "Service: " + service + "\n" +
+        "Budget: " + budget + "\n" +
+        "Project details: " + details + "\n\n" +
+        "Please let me know the next steps.";
+
+      const url = "https://wa.me/" + WHATSAPP_NUMBER +
+        "?text=" + encodeURIComponent(message);
+
+      window.open(url, "_blank", "noopener,noreferrer");
+    });
+  </script>
+</body>
+</html>
