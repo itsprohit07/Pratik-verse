@@ -309,6 +309,35 @@
         transition: none !important;
       }
     }
+  /* THREE.JS CHARACTER SCENE */
+
+.visual {
+  position: relative;
+  min-height: 430px;
+  overflow: hidden;
+  border-radius: 28px;
+  isolation: isolate;
+}
+
+#characterCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 1;
+}
+
+.welcome-card {
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (max-width: 760px) {
+  .visual {
+    min-height: 370px;
+  }
+}
   </style>
 </head>
 
